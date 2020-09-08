@@ -8,32 +8,7 @@ pipeline {
                 sh ./cloudformation_tester.sh
 
                 }
-
- 
             }
         }
-        // stage ("CloudFormation Validate") {
-        //     steps {
-
-
-        //     }
-        // }
-        // stage ("CloudFormation Plan") {
-        //     steps {
-
-        //     }
-        
-        // }
-        // stage ("CloudFormation Plan Approval") {
-        //     steps {
-
-        //     }
-        // }
-
-        // stage ("CloudFormation Apply") {
-        //     steps {
-
-        //     }
-        // }
     }
 }
