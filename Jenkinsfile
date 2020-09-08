@@ -10,7 +10,7 @@ pipeline {
         stage ('Setting up AWS Creds') {
             steps {
                 script {
-                sh './cloudformation_tester.sh'
+                sh 'sudo ./cloudformation_tester.sh'
            }
         }
      }
