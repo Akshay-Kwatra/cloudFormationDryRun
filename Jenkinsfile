@@ -1,9 +1,15 @@
+def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws_credentials']]
+
 pipeline {
    agent any
+   
+   options {
+      withCredentials(awsCredentials)
+   }
    stages {
         stage ('Setting up AWS Creds') {
             steps {
-                withAWS(credentials: 'aws_credentials', region: 'us-east-1') {
+                script {
                 sh './cloudformation_tester.sh'
            }
         }
