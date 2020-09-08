@@ -7,6 +7,8 @@ pipeline {
                 withAWS(credentials: 'aws_credentials', region: 'us-east-1') {
                 sh ./cloudformation_tester.sh
 
+                }
+
  
             }
         }
@@ -33,7 +35,5 @@ pipeline {
 
         //     }
         // }
-
-  }
-
+    }
 }
