@@ -6,7 +6,7 @@ pipeline {
             steps {
                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'akshay1234', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                      echo "Hello world!"
-                     sh "yum install -y python3 && yum install -y python3-pip && pip3 install awscli"
+                     sh "sudo yum install -y python3 && sudo yum install -y python3-pip && sudo pip3 install awscli"
                      sh "aws --version"
                      sh "aws cloudformation validate-template --template-body file://template.yaml"
                      sh "aws cloudformation create-change-set --stack-name my-application --change-set-name my-change-set --template-body file://template.yaml --change-set-type CREATE"
