@@ -25,7 +25,7 @@ pipeline {
                   proceed = false
                } 
                if(proceed) { 
-                  sh "aws cloudformation execute-change-set --region us-east-1 --change-set-name arn:aws:cloudformation:us-east-1:239843121065:changeSet/my-change-set/bef0ce43-8280-456b-89a6-a422d4513b97"
+                  sh "aws cloudformation execute-change-set --region us-east-1 --change-set-name my-change-set --stack-name my-application"
               } 
            }
          }
