@@ -26,7 +26,6 @@ pipeline {
                } 
                if(proceed) { 
                   sh "aws cloudformation execute-change-set --change-set-name my-change-set --stack-name my-application"
-"
               } 
            }
          }
