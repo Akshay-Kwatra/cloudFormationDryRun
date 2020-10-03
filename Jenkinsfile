@@ -11,5 +11,13 @@ pipeline {
                    }
                }
           }
+      
+        stage ('Approval Stage') {
+            steps {
+               timeout(time: 2, unit: “HOURS”) {
+                  input message: ‘Approve Deploy?’, ok: ‘Yes’
+               }
+           }
+       
       }
  }
