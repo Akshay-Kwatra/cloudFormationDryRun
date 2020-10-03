@@ -18,6 +18,8 @@ pipeline {
                   input message: ‘Approve Deploy?’, ok: ‘Yes’
                }
            }
+           
+        }
        
       }
  }
