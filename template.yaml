@@ -8,7 +8,7 @@ Resources:
     Type: AWS::S3::Bucket
     Description: Creating Amazon S3 bucket from CloudFormation
     Properties:
-      BucketName: MyHardCodedBucket
+      BucketName: akki4321kwatra
       
     
 Outputs:
