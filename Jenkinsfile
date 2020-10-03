@@ -25,7 +25,7 @@ pipeline {
                   proceed = false
                } 
                if(proceed) { 
-                  sh "aws cloudformation execute-change-set --change-set-name my-change-set --stack-name my-application"
+                  sh "aws cloudformation execute-change-set --region us-east-1 --change-set-name my-change-set --stack-name my-application"
               } 
            }
          }
