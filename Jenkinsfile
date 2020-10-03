@@ -2,7 +2,7 @@ pipeline {
    agent any
    stages {
       
-        stage ('Setting up AWS Creds') {
+        stage ('Describe Change Set') {
             steps {
                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                      sh "aws cloudformation validate-template --template-body file://template.yaml --region us-east-1"
@@ -12,15 +12,24 @@ pipeline {
                }
           }
       
-        stage ('Approval Stage') {
-            steps {
-               
-               timeout(time: 3600, unit: 'SECONDS') { 
-                  input('Continue to Deploy?')
-               }
+        stage ('Approval Stage to Execute Change Set') {
+            steps {              
+            script { 
+               def proceed = true 
+               try { 
+                   timeout(time: 100, unit: 'SECONDS') { 
+                           input('Continue to Deploy?')
+                   }
+               } 
+               catch (err) {
+                  proceed = false
+               } 
+               if(proceed) { 
+                  sh "aws cloudformation execute-change-set --change-set-name my-change-set --stack-name my-application"
+"
+              } 
            }
-           
-        }
-       
-      }
+         }
+       }
+    }
  }
